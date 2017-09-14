@@ -107,7 +107,7 @@
         If txt_password.Text = String.Empty Then
             txt_password.BackColor = Color.Red
             txt_password.Focus()
-            informar_campo_faltante(lbl_pasword.Text)
+            informar_campo_faltante(lbl_password.Text)
             Return False
         Else
             txt_password.BackColor = Color.White

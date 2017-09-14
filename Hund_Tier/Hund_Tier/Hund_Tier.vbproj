@@ -100,16 +100,10 @@
     <Compile Include="Vista\Login\Frm_main.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\Login\frm_UsuarioABM.Designer.vb">
+    <Compile Include="Vista\Usuario\frm_UsuarioABM.Designer.vb">
       <DependentUpon>frm_UsuarioABM.vb</DependentUpon>
     </Compile>
-    <Compile Include="Vista\Login\frm_UsuarioABM.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vista\Usuario\Frm_abm_usuario.Designer.vb">
-      <DependentUpon>Frm_abm_usuario.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Vista\Usuario\Frm_abm_usuario.vb">
+    <Compile Include="Vista\Usuario\frm_UsuarioABM.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -126,11 +120,8 @@
     <EmbeddedResource Include="Vista\Login\Frm_main.resx">
       <DependentUpon>Frm_main.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vista\Login\frm_UsuarioABM.resx">
+    <EmbeddedResource Include="Vista\Usuario\frm_UsuarioABM.resx">
       <DependentUpon>frm_UsuarioABM.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vista\Usuario\Frm_abm_usuario.resx">
-      <DependentUpon>Frm_abm_usuario.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
