@@ -1,0 +1,14 @@
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\bin\Debug\Hund_Tier.exe.config
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\bin\Debug\Hund_Tier.exe
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\bin\Debug\Hund_Tier.pdb
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\bin\Debug\Hund_Tier.xml
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\obj\Debug\Hund_Tier.vbprojResolveAssemblyReference.cache
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\obj\Debug\Hund_Tier.Resources.resources
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\obj\Debug\Hund_Tier.vbproj.GenerateResource.Cache
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\obj\Debug\Hund_Tier.exe
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\obj\Debug\Hund_Tier.xml
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\obj\Debug\Hund_Tier.pdb
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\obj\Debug\Hund_Tier.Frm_login.resources
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\obj\Debug\Hund_Tier.frm_UsuarioABM.resources
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\obj\Debug\Hund_Tier.Frm_main.resources
+C:\Users\Juan\Documents\UTN\UTN 2017\PAV1\PerrosEnAdpocion\Hund_Tier\Hund_Tier\obj\Debug\Hund_Tier.Frm_abm_usuario.resources
