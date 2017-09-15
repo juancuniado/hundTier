@@ -1,5 +1,14 @@
 ﻿Public Class frm_login
-    Private flagSalir As Boolean = True
+
+    'La property usuario es una variable del tipo Usuario de Visual studio donde se 
+    'guardaran los datos del usuario traido desde la BD. De esta manera será mas facil para pasar
+    'los datos del usuario de una form a otra sin tener que volver a entrar a la BD
+    Private Property usuario As Usuario
+    'La variable validado estará en false hasta que un usuario se loguee correctamente
+    'ahi pasara a true. Se pedira desde frm_main para saber si se logueo algun usuario
+    Private Property validado = False
+
+
 
     Private Sub btn_ingresar_Click(sender As Object, e As EventArgs) Handles btn_ingresar.Click
         Dim strSQL As String
@@ -14,16 +23,15 @@
             If tabla.Rows.Count > 0 Then
                 'Si la tabla devuelve una fila con un usuario, creamos un objeto usuario de Visual
                 ' y le asignamos las variables nombre, username y email a las del usuario
-                'que devolvio la tabla desde la BD. De esta manera será mas facil para pasar
-                'los datos del usuario de una form a otra sin tener que volver a entrar a la BD
-                Dim usuario As New Usuario
+                'que devolvio la tabla desde la BD. 
+                usuario = New Usuario
                 usuario.setNombre(tabla.Rows(0).Item("nombre_usuario").ToString())
                 usuario.setUsername(tabla.Rows(0).Item("username").ToString())
                 usuario.setEmail(tabla.Rows(0).Item("email_usuario").ToString())
-                'Actualizamos en el form principal para que aparezca el nombre del usuario
-                'en el label de nombre de usuario.
-                Frm_main.actualizarUsuarioLogueado(usuario.getUsername)
-                flagSalir = False
+                'Seteamos validado a true, entonces desde frm_main podremos saber si
+                'fue efectivo el login, para saber si actualizar el lbl de nombre de usuario
+                'o si se cancela el inicio de sesion para que la frm_main no se muestre
+                validado = True
                 Me.Close()
             Else
                 MessageBox.Show("Usuario y/o password incorrectos", "Validación de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -52,4 +60,13 @@
         'End termina la ejecucion de la app
         End
     End Sub
+    Public Function getUsuario() As Usuario
+        Return usuario
+    End Function
+
+    Public Function getValidado() As Boolean
+        Return validado
+    End Function
+
+
 End Class
