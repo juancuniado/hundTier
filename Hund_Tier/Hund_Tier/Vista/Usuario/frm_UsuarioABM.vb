@@ -58,7 +58,8 @@
     End Sub
 
     'Funcion que permite determinar si el mail ingresado ya ha sido utilizado por otro usuario
-    Private Function existe_mail() As Boolean
+    'No deberian estar estas funciones friend en algun otro lugar separado????????????????
+    Friend Function existe_mail() As Boolean
         Return BDHelper.getDBHelper.ConsultaSQL("Select * from Usuarios where email = '" + txt_email.Text + "'").Rows.Count > 0
     End Function
     'Funcion que permite determinar si el nombre de usuario ingresado ya ha sido utilizado por otro usuario
@@ -88,13 +89,9 @@
             txt_apellido.BackColor = Color.White
         End If
 
-        If cmb_barrio.Text = String.Empty Then
-            cmb_barrio.BackColor = Color.Red
-            cmb_barrio.Focus()
+        If cmb_barrio.SelectedItem Is Nothing Then
             informar_campo_faltante(lbl_barrio.Text)
             Return False
-        Else
-            cmb_barrio.BackColor = Color.White
         End If
         If txt_email.Text = String.Empty Then
             txt_email.BackColor = Color.Red
@@ -149,7 +146,7 @@
     End Function
 
     'Funcion que informa con una ventana de error el campo que falto rellenar.
-    Private Function informar_campo_faltante(ByVal campoFalta As String)
+    Friend Function informar_campo_faltante(ByVal campoFalta As String)
         MessageBox.Show("El campo " & campoFalta & " es obligatorio, por favor completelo",
                             "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Function

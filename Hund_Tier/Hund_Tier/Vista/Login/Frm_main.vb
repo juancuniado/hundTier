@@ -26,5 +26,8 @@
         Dim form_ajuste_perfil As New Frm_perfil_usuario
         form_ajuste_perfil.seleccionar_usuario(usuario)
         form_ajuste_perfil.ShowDialog()
+        If Frm_perfil_usuario.modifico_datos() Then
+            usuario = Frm_perfil_usuario.getUsuario()
+        End If
     End Sub
 End Class

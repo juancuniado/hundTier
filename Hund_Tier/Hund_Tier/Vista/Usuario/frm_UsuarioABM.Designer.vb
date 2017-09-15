@@ -164,6 +164,7 @@ Partial Class frm_UsuarioABM
         '
         Me.txt_password.Location = New System.Drawing.Point(113, 45)
         Me.txt_password.Name = "txt_password"
+        Me.txt_password.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txt_password.Size = New System.Drawing.Size(118, 20)
         Me.txt_password.TabIndex = 9
         '

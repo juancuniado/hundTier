@@ -30,27 +30,28 @@ Partial Class Frm_perfil_usuario
         Me.txt_nombre = New System.Windows.Forms.TextBox()
         Me.lbl_nombre = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txt_barrio = New System.Windows.Forms.TextBox()
         Me.lbl_depto = New System.Windows.Forms.Label()
         Me.txt_depto = New System.Windows.Forms.TextBox()
         Me.lbl_piso = New System.Windows.Forms.Label()
         Me.txt_piso = New System.Windows.Forms.TextBox()
         Me.lbl_numero = New System.Windows.Forms.Label()
         Me.txt_numero = New System.Windows.Forms.TextBox()
+        Me.cmb_barrio = New System.Windows.Forms.ComboBox()
         Me.lbl_calle = New System.Windows.Forms.Label()
         Me.txt_calle = New System.Windows.Forms.TextBox()
         Me.lbl_barrio = New System.Windows.Forms.Label()
         Me.txt_telefono = New System.Windows.Forms.TextBox()
         Me.lbl_num_telefono = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.btn_modificar_info = New System.Windows.Forms.Button()
         Me.lbl_username = New System.Windows.Forms.Label()
         Me.txt_username = New System.Windows.Forms.TextBox()
         Me.txt_password = New System.Windows.Forms.TextBox()
         Me.lbl_password = New System.Windows.Forms.Label()
-        Me.btn_confirmar = New System.Windows.Forms.Button()
-        Me.cmb_barrio = New System.Windows.Forms.ComboBox()
-        Me.txt_barrio = New System.Windows.Forms.TextBox()
+        Me.btn_modificar_info = New System.Windows.Forms.Button()
+        Me.btn_salir = New System.Windows.Forms.Button()
         Me.btn_cancelar = New System.Windows.Forms.Button()
+        Me.btn_guardar_cambios = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -144,6 +145,14 @@ Partial Class Frm_perfil_usuario
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos de contacto: "
         '
+        'txt_barrio
+        '
+        Me.txt_barrio.Location = New System.Drawing.Point(60, 46)
+        Me.txt_barrio.Name = "txt_barrio"
+        Me.txt_barrio.ReadOnly = True
+        Me.txt_barrio.Size = New System.Drawing.Size(193, 20)
+        Me.txt_barrio.TabIndex = 13
+        '
         'lbl_depto
         '
         Me.lbl_depto.AutoSize = True
@@ -194,6 +203,16 @@ Partial Class Frm_perfil_usuario
         Me.txt_numero.ReadOnly = True
         Me.txt_numero.Size = New System.Drawing.Size(193, 20)
         Me.txt_numero.TabIndex = 7
+        '
+        'cmb_barrio
+        '
+        Me.cmb_barrio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmb_barrio.FormattingEnabled = True
+        Me.cmb_barrio.Location = New System.Drawing.Point(60, 44)
+        Me.cmb_barrio.Name = "cmb_barrio"
+        Me.cmb_barrio.Size = New System.Drawing.Size(193, 21)
+        Me.cmb_barrio.TabIndex = 6
+        Me.cmb_barrio.Visible = False
         '
         'lbl_calle
         '
@@ -251,15 +270,6 @@ Partial Class Frm_perfil_usuario
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de usuario"
         '
-        'btn_modificar_info
-        '
-        Me.btn_modificar_info.Location = New System.Drawing.Point(55, 374)
-        Me.btn_modificar_info.Name = "btn_modificar_info"
-        Me.btn_modificar_info.Size = New System.Drawing.Size(141, 23)
-        Me.btn_modificar_info.TabIndex = 6
-        Me.btn_modificar_info.Text = "Modificar informacion"
-        Me.btn_modificar_info.UseVisualStyleBackColor = True
-        '
         'lbl_username
         '
         Me.lbl_username.AutoSize = True
@@ -295,32 +305,23 @@ Partial Class Frm_perfil_usuario
         Me.lbl_password.TabIndex = 0
         Me.lbl_password.Text = "Contraseña:"
         '
-        'btn_confirmar
+        'btn_modificar_info
         '
-        Me.btn_confirmar.Location = New System.Drawing.Point(202, 374)
-        Me.btn_confirmar.Name = "btn_confirmar"
-        Me.btn_confirmar.Size = New System.Drawing.Size(75, 23)
-        Me.btn_confirmar.TabIndex = 8
-        Me.btn_confirmar.Text = "Confirmar"
-        Me.btn_confirmar.UseVisualStyleBackColor = True
+        Me.btn_modificar_info.Location = New System.Drawing.Point(55, 374)
+        Me.btn_modificar_info.Name = "btn_modificar_info"
+        Me.btn_modificar_info.Size = New System.Drawing.Size(141, 23)
+        Me.btn_modificar_info.TabIndex = 6
+        Me.btn_modificar_info.Text = "Modificar informacion"
+        Me.btn_modificar_info.UseVisualStyleBackColor = True
         '
-        'cmb_barrio
+        'btn_salir
         '
-        Me.cmb_barrio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmb_barrio.FormattingEnabled = True
-        Me.cmb_barrio.Location = New System.Drawing.Point(60, 44)
-        Me.cmb_barrio.Name = "cmb_barrio"
-        Me.cmb_barrio.Size = New System.Drawing.Size(193, 21)
-        Me.cmb_barrio.TabIndex = 6
-        Me.cmb_barrio.Visible = False
-        '
-        'txt_barrio
-        '
-        Me.txt_barrio.Location = New System.Drawing.Point(60, 46)
-        Me.txt_barrio.Name = "txt_barrio"
-        Me.txt_barrio.ReadOnly = True
-        Me.txt_barrio.Size = New System.Drawing.Size(193, 20)
-        Me.txt_barrio.TabIndex = 13
+        Me.btn_salir.Location = New System.Drawing.Point(202, 374)
+        Me.btn_salir.Name = "btn_salir"
+        Me.btn_salir.Size = New System.Drawing.Size(75, 23)
+        Me.btn_salir.TabIndex = 8
+        Me.btn_salir.Text = "Salir"
+        Me.btn_salir.UseVisualStyleBackColor = True
         '
         'btn_cancelar
         '
@@ -332,14 +333,25 @@ Partial Class Frm_perfil_usuario
         Me.btn_cancelar.UseVisualStyleBackColor = True
         Me.btn_cancelar.Visible = False
         '
+        'btn_guardar_cambios
+        '
+        Me.btn_guardar_cambios.Location = New System.Drawing.Point(202, 374)
+        Me.btn_guardar_cambios.Name = "btn_guardar_cambios"
+        Me.btn_guardar_cambios.Size = New System.Drawing.Size(75, 23)
+        Me.btn_guardar_cambios.TabIndex = 10
+        Me.btn_guardar_cambios.Text = "Guardar"
+        Me.btn_guardar_cambios.UseVisualStyleBackColor = True
+        Me.btn_guardar_cambios.Visible = False
+        '
         'Frm_perfil_usuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(289, 418)
+        Me.Controls.Add(Me.btn_guardar_cambios)
         Me.Controls.Add(Me.btn_cancelar)
         Me.Controls.Add(Me.btn_modificar_info)
-        Me.Controls.Add(Me.btn_confirmar)
+        Me.Controls.Add(Me.btn_salir)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -380,8 +392,9 @@ Partial Class Frm_perfil_usuario
     Friend WithEvents txt_username As TextBox
     Friend WithEvents txt_password As TextBox
     Friend WithEvents lbl_password As Label
-    Friend WithEvents btn_confirmar As Button
+    Friend WithEvents btn_salir As Button
     Friend WithEvents txt_barrio As TextBox
     Friend WithEvents cmb_barrio As ComboBox
     Friend WithEvents btn_cancelar As Button
+    Friend WithEvents btn_guardar_cambios As Button
 End Class

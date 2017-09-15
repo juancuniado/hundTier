@@ -19,7 +19,7 @@
         If txt_password.Text = String.Empty Or txt_email.Text = String.Empty Then
             MessageBox.Show("Olvidó ingresar email y/o password", "Validación de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            strSQL = "Select u.email AS 'email_usuario' , u.nombre AS 'nombre_usuario', username From Usuarios u Where u.email = '" & txt_email.Text & "' AND u.password = '" & txt_password.Text & "'"
+            strSQL = "Select u.id_usuario,u.email AS 'email_usuario' , u.nombre AS 'nombre_usuario', username From Usuarios u Where u.email = '" & txt_email.Text & "' AND u.password = '" & txt_password.Text & "'"
             tabla = BDHelper.getDBHelper().ConsultaSQL(strSQL)
             If tabla.Rows.Count > 0 Then
                 'Si la tabla devuelve una fila con un usuario, creamos un objeto usuario de Visual
@@ -29,6 +29,7 @@
                 usuario.setNombre(tabla.Rows(0).Item("nombre_usuario").ToString())
                 usuario.setUsername(tabla.Rows(0).Item("username").ToString())
                 usuario.setEmail(tabla.Rows(0).Item("email_usuario").ToString())
+                usuario.setId(tabla.Rows(0).Item("id_usuario").ToString())
                 'Seteamos validado a true, entonces desde frm_main podremos saber si
                 'fue efectivo el login, para saber si actualizar el lbl de nombre de usuario
                 'o si se cancela el inicio de sesion para que la frm_main no se muestre

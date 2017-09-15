@@ -1,6 +1,14 @@
 ﻿Public Class Frm_perfil_usuario
     Private Property usuario As Usuario
+    'Bandera o flag, que sirve para saber si se esta en modo edicion o en modo visualizacion
     Private Property bandera_edicion = False
+    'Atributo que nos permitira saber desde otra form si los datos fueron cambiados para actualizar
+    'los datos que tiene el usuario guardado en la otra form
+    Private Property bandera_datos_modificados = False
+
+    'La clasica strSql que contendra la string que se ejecutara en la BD
+    Dim strSql As String = ""
+
 
     Enum Opcion
         insert
@@ -45,6 +53,8 @@
         txt_username.Text = usuario.getUsername
         txt_barrio.Text = usuario.getBarrio
         txt_password.Text = usuario.getPassword
+        frm_UsuarioABM.llenarCombo(cmb_barrio, BDHelper.getDBHelper.ConsultaSQL("SELECT * From Barrios WHERE 1 = 1"), "nombre", "id_barrio")
+
 
     End Sub
 
@@ -54,7 +64,26 @@
     End Sub
 
     Private Sub permitir_edicion(ByVal valor As Boolean)
+        'TODO permitir el inicio de sesion con username ademas del correo porque el correo electronico deberia
+        'poder variar, pero el username no. 
+        'TODO poner visibilidad del campo correo electronico en visible en modo edicion y lo contrario
+        'en modo visualizacion
         If valor Then
+            txt_nombre.ReadOnly = False
+            txt_apellido.ReadOnly = False
+            txt_telefono.ReadOnly = False
+            txt_calle.ReadOnly = False
+            txt_numero.ReadOnly = False
+            txt_piso.ReadOnly = False
+            txt_depto.ReadOnly = False
+            txt_barrio.Visible = False
+            cmb_barrio.Visible = True
+
+            btn_modificar_info.Visible = False
+            btn_salir.Visible = False
+            btn_cancelar.Visible = True
+            btn_guardar_cambios.Visible = True
+        Else
             txt_nombre.ReadOnly = True
             txt_apellido.ReadOnly = True
             txt_telefono.ReadOnly = True
@@ -62,6 +91,102 @@
             txt_numero.ReadOnly = True
             txt_piso.ReadOnly = True
             txt_depto.ReadOnly = True
+            txt_barrio.Visible = True
+            cmb_barrio.Visible = False
+
+            btn_modificar_info.Visible = True
+            btn_salir.Visible = True
+            btn_cancelar.Visible = False
+            btn_guardar_cambios.Visible = False
         End If
     End Sub
+
+    Private Sub btn_cancelar_Click(sender As Object, e As EventArgs) Handles btn_cancelar.Click
+        bandera_edicion = False
+        permitir_edicion(bandera_edicion)
+    End Sub
+
+    Private Sub btn_guardar_cambios_Click(sender As Object, e As EventArgs) Handles btn_guardar_cambios.Click
+        'Como hacemos para ejecutar la consulta del update pero con parametros, asi me aseguro que lo que pone
+        'en los campos no me modifica la BD ?????????????????
+        'TODO chequear que en los campos ingresados se ingresan los valores que deseamos, int o string.
+        If validar_campos() Then
+            'If frm_UsuarioABM.existe_mail() Then
+            '
+            'Else
+            'End If
+            Dim d As DialogResult
+            d = MessageBox.Show("¿Desea modificar sus datos?", "Aviso", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+            If (d = DialogResult.OK) Then
+                usuario.setNombre(txt_nombre.Text)
+                usuario.setApellido(txt_apellido.Text)
+                usuario.setEmail(txt_email.Text)
+                usuario.setBarrio(cmb_barrio.SelectedValue.ToString)
+                usuario.setCalle(txt_calle.Text)
+                usuario.setNumCalle(txt_numero.Text)
+                usuario.setPiso(txt_piso.Text.ToString)
+                usuario.setDepartamento(txt_depto.Text)
+                usuario.set_numTelefono(txt_telefono.Text)
+
+                strSql += "Update Usuarios "
+                strSql += "SET nombre ='" & usuario.getNombre & "', apellido ='" & usuario.getApellido & "', num_telefono='" & usuario.getNumTelefono & "', email='" & usuario.getEmail & "', id_barrio=" & usuario.getBarrio & ", calle='" & usuario.getCalle & "', numero='" & usuario.getNumeroCalle & "',piso=" & usuario.getPiso & ", departamento='" & usuario.getDepartamento & "'"
+                strSql += "WHERE id_usuario = " & usuario.getIdUsuario
+                If BDHelper.getDBHelper.EjecutarSQL(strSql) > 0 Then
+                    MessageBox.Show("Sus datos fueron actualizados!", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    bandera_edicion = False
+                    permitir_edicion(bandera_edicion)
+                    bandera_datos_modificados = True
+                    Me.Close()
+                End If
+
+            End If
+        End If
+
+
+    End Sub
+
+    'Funcion que sirve para validar que se hayan rellenado todos los campos obligatorios, caso contrario
+    'se informa con una ventana para que cada campo se complete
+    Private Function validar_campos() As Boolean
+        'campos obligatorios
+        If txt_nombre.Text = String.Empty Then
+            txt_nombre.BackColor = Color.Red
+            txt_nombre.Focus()
+            frm_UsuarioABM.informar_campo_faltante(lbl_nombre.Text)
+            Return False
+        Else
+            txt_nombre.BackColor = Color.White
+        End If
+
+        If txt_apellido.Text = String.Empty Then
+            txt_apellido.BackColor = Color.Red
+            txt_apellido.Focus()
+            frm_UsuarioABM.informar_campo_faltante(lbl_apellido.Text)
+            Return False
+        Else
+            txt_apellido.BackColor = Color.White
+        End If
+        If txt_email.Text = String.Empty Then
+            txt_email.BackColor = Color.Red
+            txt_email.Focus()
+            frm_UsuarioABM.informar_campo_faltante(lbl_email.Text)
+            Return False
+        Else
+            txt_email.BackColor = Color.White
+        End If
+        If cmb_barrio.SelectedItem Is Nothing Then
+            frm_UsuarioABM.informar_campo_faltante(lbl_barrio.Text)
+            Return False
+        End If
+
+        Return True
+    End Function
+
+    Public Function modifico_datos() As Boolean
+        Return bandera_datos_modificados
+    End Function
+
+    Public Function getUsuario() As Usuario
+        Return usuario
+    End Function
 End Class
