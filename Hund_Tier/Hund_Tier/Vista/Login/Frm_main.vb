@@ -11,6 +11,16 @@
     End Sub
 
     Private Sub MiPerfilToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MiPerfilToolStripMenuItem.Click
-        frm_UsuarioABM.ShowDialog()
+        'Obtengo el nombre del usuario con el que voy a recuperar los datos
+        'de la BD
+        Dim nombre_usuario = lbl_nombre_usuario.Text
+        Dim strSql = "SELECT * FROM Usuarios WHERE username='" & nombre_usuario & "'"
+        Dim tabla = BDHelper.getDBHelper.ConsultaSQL(strSql)
+        If tabla.Rows.Count > 0 Then
+            Frm_perfil_usuario.seleccionar_usuario(tabla)
+        End If
+
+
+        Frm_perfil_usuario.ShowDialog()
     End Sub
 End Class

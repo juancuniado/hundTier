@@ -30,14 +30,14 @@ Partial Class frm_UsuarioABM
         Me.lbl_barrio = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.txt_email = New System.Windows.Forms.TextBox()
-        Me.lbl_email = New System.Windows.Forms.Label()
-        Me.txt_password = New System.Windows.Forms.TextBox()
-        Me.lbl_password = New System.Windows.Forms.Label()
-        Me.txt_confirmarPass = New System.Windows.Forms.TextBox()
-        Me.lbl_confirmarPass = New System.Windows.Forms.Label()
         Me.txt_username = New System.Windows.Forms.TextBox()
         Me.lbl_username = New System.Windows.Forms.Label()
+        Me.txt_confirmarPass = New System.Windows.Forms.TextBox()
+        Me.lbl_confirmarPass = New System.Windows.Forms.Label()
+        Me.txt_password = New System.Windows.Forms.TextBox()
+        Me.lbl_password = New System.Windows.Forms.Label()
+        Me.txt_email = New System.Windows.Forms.TextBox()
+        Me.lbl_email = New System.Windows.Forms.Label()
         Me.btn_add_user = New System.Windows.Forms.Button()
         Me.btn_cancelar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
@@ -126,21 +126,39 @@ Partial Class frm_UsuarioABM
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Crear un usuario"
         '
-        'txt_email
+        'txt_username
         '
-        Me.txt_email.Location = New System.Drawing.Point(58, 19)
-        Me.txt_email.Name = "txt_email"
-        Me.txt_email.Size = New System.Drawing.Size(173, 20)
-        Me.txt_email.TabIndex = 7
+        Me.txt_username.Location = New System.Drawing.Point(113, 97)
+        Me.txt_username.Name = "txt_username"
+        Me.txt_username.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txt_username.Size = New System.Drawing.Size(118, 20)
+        Me.txt_username.TabIndex = 13
         '
-        'lbl_email
+        'lbl_username
         '
-        Me.lbl_email.AutoSize = True
-        Me.lbl_email.Location = New System.Drawing.Point(6, 22)
-        Me.lbl_email.Name = "lbl_email"
-        Me.lbl_email.Size = New System.Drawing.Size(35, 13)
-        Me.lbl_email.TabIndex = 6
-        Me.lbl_email.Text = "Email:"
+        Me.lbl_username.AutoSize = True
+        Me.lbl_username.Location = New System.Drawing.Point(6, 100)
+        Me.lbl_username.Name = "lbl_username"
+        Me.lbl_username.Size = New System.Drawing.Size(99, 13)
+        Me.lbl_username.TabIndex = 12
+        Me.lbl_username.Text = "Nombre de usuario:"
+        '
+        'txt_confirmarPass
+        '
+        Me.txt_confirmarPass.Location = New System.Drawing.Point(113, 71)
+        Me.txt_confirmarPass.Name = "txt_confirmarPass"
+        Me.txt_confirmarPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txt_confirmarPass.Size = New System.Drawing.Size(118, 20)
+        Me.txt_confirmarPass.TabIndex = 11
+        '
+        'lbl_confirmarPass
+        '
+        Me.lbl_confirmarPass.AutoSize = True
+        Me.lbl_confirmarPass.Location = New System.Drawing.Point(6, 74)
+        Me.lbl_confirmarPass.Name = "lbl_confirmarPass"
+        Me.lbl_confirmarPass.Size = New System.Drawing.Size(110, 13)
+        Me.lbl_confirmarPass.TabIndex = 10
+        Me.lbl_confirmarPass.Text = "Confirmar contraseña:"
         '
         'txt_password
         '
@@ -158,37 +176,21 @@ Partial Class frm_UsuarioABM
         Me.lbl_password.TabIndex = 8
         Me.lbl_password.Text = "Contraseña:"
         '
-        'txt_confirmarPass
+        'txt_email
         '
-        Me.txt_confirmarPass.Location = New System.Drawing.Point(113, 71)
-        Me.txt_confirmarPass.Name = "txt_confirmarPass"
-        Me.txt_confirmarPass.Size = New System.Drawing.Size(118, 20)
-        Me.txt_confirmarPass.TabIndex = 11
+        Me.txt_email.Location = New System.Drawing.Point(58, 19)
+        Me.txt_email.Name = "txt_email"
+        Me.txt_email.Size = New System.Drawing.Size(173, 20)
+        Me.txt_email.TabIndex = 7
         '
-        'lbl_confirmarPass
+        'lbl_email
         '
-        Me.lbl_confirmarPass.AutoSize = True
-        Me.lbl_confirmarPass.Location = New System.Drawing.Point(6, 74)
-        Me.lbl_confirmarPass.Name = "lbl_confirmarPass"
-        Me.lbl_confirmarPass.Size = New System.Drawing.Size(110, 13)
-        Me.lbl_confirmarPass.TabIndex = 10
-        Me.lbl_confirmarPass.Text = "Confirmar contraseña:"
-        '
-        'txt_username
-        '
-        Me.txt_username.Location = New System.Drawing.Point(113, 97)
-        Me.txt_username.Name = "txt_username"
-        Me.txt_username.Size = New System.Drawing.Size(118, 20)
-        Me.txt_username.TabIndex = 13
-        '
-        'lbl_username
-        '
-        Me.lbl_username.AutoSize = True
-        Me.lbl_username.Location = New System.Drawing.Point(6, 100)
-        Me.lbl_username.Name = "lbl_username"
-        Me.lbl_username.Size = New System.Drawing.Size(99, 13)
-        Me.lbl_username.TabIndex = 12
-        Me.lbl_username.Text = "Nombre de usuario:"
+        Me.lbl_email.AutoSize = True
+        Me.lbl_email.Location = New System.Drawing.Point(6, 22)
+        Me.lbl_email.Name = "lbl_email"
+        Me.lbl_email.Size = New System.Drawing.Size(35, 13)
+        Me.lbl_email.TabIndex = 6
+        Me.lbl_email.Text = "Email:"
         '
         'btn_add_user
         '

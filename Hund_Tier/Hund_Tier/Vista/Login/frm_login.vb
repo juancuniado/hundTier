@@ -9,11 +9,20 @@
         If txt_password.Text = String.Empty Or txt_email.Text = String.Empty Then
             MessageBox.Show("Olvidó ingresar email y/o password", "Validación de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            strSQL = "Select u.email AS 'email_usuario' , u.nombre AS 'nombre_usuario' From Usuarios u Where u.email = '" & txt_email.Text & "' AND u.password = '" & txt_password.Text & "'"
+            strSQL = "Select u.email AS 'email_usuario' , u.nombre AS 'nombre_usuario', username From Usuarios u Where u.email = '" & txt_email.Text & "' AND u.password = '" & txt_password.Text & "'"
             tabla = BDHelper.getDBHelper().ConsultaSQL(strSQL)
             If tabla.Rows.Count > 0 Then
-                'lbl_prueba.Text = "Nombre usuario: " & tabla.Rows(0).Item("nombre_usuario").ToString()
-                Frm_main.actualizarUsuarioLogueado("Usuario: " & tabla.Rows(0).Item("nombre_usuario").ToString())
+                'Si la tabla devuelve una fila con un usuario, creamos un objeto usuario de Visual
+                ' y le asignamos las variables nombre, username y email a las del usuario
+                'que devolvio la tabla desde la BD. De esta manera será mas facil para pasar
+                'los datos del usuario de una form a otra sin tener que volver a entrar a la BD
+                Dim usuario As New Usuario
+                usuario.setNombre(tabla.Rows(0).Item("nombre_usuario").ToString())
+                usuario.setUsername(tabla.Rows(0).Item("username").ToString())
+                usuario.setEmail(tabla.Rows(0).Item("email_usuario").ToString())
+                'Actualizamos en el form principal para que aparezca el nombre del usuario
+                'en el label de nombre de usuario.
+                Frm_main.actualizarUsuarioLogueado(usuario.getUsername)
                 flagSalir = False
                 Me.Close()
             Else

@@ -26,6 +26,7 @@ Partial Class Frm_main
         Me.MiPerfilToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lbl_nombre_usuario = New System.Windows.Forms.Label()
         Me.lbl_img_user = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.mnu_frm_main.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -47,7 +48,7 @@ Partial Class Frm_main
         'lbl_nombre_usuario
         '
         Me.lbl_nombre_usuario.AutoSize = True
-        Me.lbl_nombre_usuario.Location = New System.Drawing.Point(225, 45)
+        Me.lbl_nombre_usuario.Location = New System.Drawing.Point(233, 45)
         Me.lbl_nombre_usuario.Name = "lbl_nombre_usuario"
         Me.lbl_nombre_usuario.Size = New System.Drawing.Size(39, 13)
         Me.lbl_nombre_usuario.TabIndex = 1
@@ -58,11 +59,21 @@ Partial Class Frm_main
         '
         Me.lbl_img_user.AutoSize = True
         Me.lbl_img_user.Image = Global.Hund_Tier.My.Resources.Resources.user_log
-        Me.lbl_img_user.Location = New System.Drawing.Point(189, 37)
+        Me.lbl_img_user.Location = New System.Drawing.Point(125, 45)
         Me.lbl_img_user.MinimumSize = New System.Drawing.Size(30, 30)
         Me.lbl_img_user.Name = "lbl_img_user"
         Me.lbl_img_user.Size = New System.Drawing.Size(30, 30)
         Me.lbl_img_user.TabIndex = 2
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(161, 45)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(46, 13)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Usuario:"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Frm_main
         '
@@ -70,6 +81,7 @@ Partial Class Frm_main
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lbl_img_user)
         Me.Controls.Add(Me.lbl_nombre_usuario)
         Me.Controls.Add(Me.mnu_frm_main)
@@ -87,4 +99,5 @@ Partial Class Frm_main
     Friend WithEvents MiPerfilToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents lbl_nombre_usuario As Label
     Friend WithEvents lbl_img_user As Label
+    Friend WithEvents Label1 As Label
 End Class

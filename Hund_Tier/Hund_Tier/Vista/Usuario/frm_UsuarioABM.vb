@@ -18,6 +18,8 @@
         llenarCombo(cmb_barrio, BDHelper.getDBHelper.ConsultaSQL("SELECT * From Barrios WHERE 1 = 1"), "nombre", "id_barrio")
     End Sub
 
+
+
     Private Sub btn_add_user_Click(sender As Object, e As EventArgs) Handles btn_add_user.Click
         Dim id_usuario = 0
         If validar_campos() Then
