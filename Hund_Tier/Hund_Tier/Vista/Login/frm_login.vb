@@ -9,6 +9,7 @@
     Private Property validado = False
 
 
+    'TODO permitir iniciar sesion con username ademas de mail. 
 
     Private Sub btn_ingresar_Click(sender As Object, e As EventArgs) Handles btn_ingresar.Click
         Dim strSQL As String

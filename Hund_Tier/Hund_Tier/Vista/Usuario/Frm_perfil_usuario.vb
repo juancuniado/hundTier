@@ -1,5 +1,6 @@
 ﻿Public Class Frm_perfil_usuario
     Private Property usuario As Usuario
+    Private Property bandera_edicion = False
 
     Enum Opcion
         insert
@@ -33,6 +34,7 @@
             usuario.setUsername(tabla.Rows(0).Item("username").ToString)
             usuario.setApellido(tabla.Rows(0).Item("apellido").ToString)
             usuario.setBarrio(tabla.Rows(0).Item("nombre_barrio").ToString)
+            usuario.setPassword(tabla.Rows(0).Item("password").ToString)
         End If
     End Sub
 
@@ -40,9 +42,26 @@
         txt_nombre.Text = usuario.getNombre
         txt_apellido.Text = usuario.getApellido
         txt_email.Text = usuario.getEmail
-        cmb_barrio.Text = usuario.getBarrio
+        txt_username.Text = usuario.getUsername
+        txt_barrio.Text = usuario.getBarrio
+        txt_password.Text = usuario.getPassword
 
     End Sub
 
+    Private Sub btn_modificar_info_Click(sender As Object, e As EventArgs) Handles btn_modificar_info.Click
+        bandera_edicion = True
+        permitir_edicion(bandera_edicion)
+    End Sub
 
+    Private Sub permitir_edicion(ByVal valor As Boolean)
+        If valor Then
+            txt_nombre.ReadOnly = True
+            txt_apellido.ReadOnly = True
+            txt_telefono.ReadOnly = True
+            txt_calle.ReadOnly = True
+            txt_numero.ReadOnly = True
+            txt_piso.ReadOnly = True
+            txt_depto.ReadOnly = True
+        End If
+    End Sub
 End Class

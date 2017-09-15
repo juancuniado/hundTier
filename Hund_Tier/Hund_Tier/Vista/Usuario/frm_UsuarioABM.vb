@@ -156,7 +156,7 @@
 
     'Funcion que, dependiendo del error que este sucediendo, lo informa. El tipo de error se pasa por
     'parametro como una variable del tipo Err definida arriba de todo en esta clase.
-    Private Function informar_error(ByVal identificador As Err)
+    Friend Function informar_error(ByVal identificador As Err)
         Select Case identificador
             Case Err.email_existente
                 MessageBox.Show("La direccion de email ingresada ya tiene una cuenta asociada, por favor ingrese otra direccion",
