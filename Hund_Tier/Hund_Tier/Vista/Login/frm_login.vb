@@ -19,7 +19,8 @@
         If txt_password.Text = String.Empty Or txt_email.Text = String.Empty Then
             MessageBox.Show("Olvidó ingresar email y/o password", "Validación de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            strSQL = "Select u.id_usuario,u.email AS 'email_usuario' , u.nombre AS 'nombre_usuario', username From Usuarios u Where u.email = '" & txt_email.Text & "' AND u.password = '" & txt_password.Text & "'"
+            ' El usuario puede loguearse con email o username
+            strSQL = "Select u.id_usuario,u.email AS 'email_usuario' , u.nombre AS 'nombre_usuario', username From Usuarios u Where (u.email = '" & txt_email.Text & "' OR u.username = '" & txt_email.Text & "') AND u.password = '" & txt_password.Text & "'"
             tabla = BDHelper.getDBHelper().ConsultaSQL(strSQL)
             If tabla.Rows.Count > 0 Then
                 'Si la tabla devuelve una fila con un usuario, creamos un objeto usuario de Visual
@@ -70,5 +71,7 @@
         Return validado
     End Function
 
-
+    Private Sub lbl_info_username_Click(sender As Object, e As EventArgs) Handles lbl_info_username.Click
+        MessageBox.Show("Si no recuerda su nombre de usuario puede intentar con su email", "Inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 End Class
