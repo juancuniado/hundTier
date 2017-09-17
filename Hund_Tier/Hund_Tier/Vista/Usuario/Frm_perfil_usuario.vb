@@ -32,15 +32,25 @@
         usuario = user
         'Obtengo el nombre del usuario con el que voy a recuperar los datos
         'de la BD
-        Dim strSql = "Select U.nombre, U.apellido, U.email, U.password, U.username, B.nombre AS 'nombre_barrio'"
+        'Esto ya lo hago desde login, tengo que volver a hacerlo aca para garantizar que no haya
+        'habido cambios en la bd o puedo trabajar con lo que ya obtuve, evitando el acceso a la 
+        'BD nuevamente ????????????????????????????????????????????????
+        Dim strSql = "Select U.*, B.nombre AS 'nombre_barrio'"
         strSql += " From usuarios  U Join barrios B on U.id_barrio = B.id_barrio"
         strSql += " WHERE U.username = '" & user.getUsername & "'"
         Dim tabla = BDHelper.getDBHelper.ConsultaSQL(strSql)
         If tabla.Rows.Count > 0 Then
-            usuario.setNombre(tabla.Rows(0).Item("nombre").ToString)
-            usuario.setEmail(tabla.Rows(0).Item("email").ToString)
-            usuario.setUsername(tabla.Rows(0).Item("username").ToString)
-            usuario.setApellido(tabla.Rows(0).Item("apellido").ToString)
+            usuario.setNombre(tabla.Rows(0).Item("nombre").ToString())
+            usuario.setApellido(tabla.Rows(0).Item("apellido").ToString())
+            usuario.set_numTelefono(tabla.Rows(0).Item("num_telefono").ToString())
+            usuario.setEmail(tabla.Rows(0).Item("email").ToString())
+            usuario.setBarrio(tabla.Rows(0).Item("id_barrio").ToString())
+            usuario.setCalle(tabla.Rows(0).Item("calle").ToString())
+            usuario.setNumCalle(tabla.Rows(0).Item("numero").ToString())
+            usuario.setPiso(tabla.Rows(0).Item("piso").ToString())
+            usuario.setDepartamento(tabla.Rows(0).Item("departamento").ToString())
+            usuario.setUsername(tabla.Rows(0).Item("username").ToString())
+            usuario.setId(tabla.Rows(0).Item("id_usuario").ToString())
             usuario.setBarrio(tabla.Rows(0).Item("nombre_barrio").ToString)
             usuario.setPassword(tabla.Rows(0).Item("password").ToString)
         End If
@@ -53,6 +63,11 @@
         txt_username.Text = usuario.getUsername
         txt_barrio.Text = usuario.getBarrio
         txt_password.Text = usuario.getPassword
+        txt_calle.Text = usuario.getCalle
+        txt_numero_calle.Text = usuario.getNumeroCalle
+        txt_depto.Text = usuario.getDepartamento
+        txt_piso.Text = usuario.getPiso
+        txt_telefono.Text = usuario.getNumTelefono
         frm_UsuarioABM.llenarCombo(cmb_barrio, BDHelper.getDBHelper.ConsultaSQL("SELECT * From Barrios WHERE 1 = 1"), "nombre", "id_barrio")
 
 
@@ -73,7 +88,7 @@
             txt_apellido.ReadOnly = False
             txt_telefono.ReadOnly = False
             txt_calle.ReadOnly = False
-            txt_numero.ReadOnly = False
+            txt_numero_calle.ReadOnly = False
             txt_piso.ReadOnly = False
             txt_depto.ReadOnly = False
             txt_barrio.Visible = False
@@ -88,7 +103,7 @@
             txt_apellido.ReadOnly = True
             txt_telefono.ReadOnly = True
             txt_calle.ReadOnly = True
-            txt_numero.ReadOnly = True
+            txt_numero_calle.ReadOnly = True
             txt_piso.ReadOnly = True
             txt_depto.ReadOnly = True
             txt_barrio.Visible = True
@@ -123,7 +138,7 @@
                 usuario.setEmail(txt_email.Text)
                 usuario.setBarrio(cmb_barrio.SelectedValue.ToString)
                 usuario.setCalle(txt_calle.Text)
-                usuario.setNumCalle(txt_numero.Text)
+                usuario.setNumCalle(txt_numero_calle.Text)
                 usuario.setPiso(txt_piso.Text.ToString)
                 usuario.setDepartamento(txt_depto.Text)
                 usuario.set_numTelefono(txt_telefono.Text)

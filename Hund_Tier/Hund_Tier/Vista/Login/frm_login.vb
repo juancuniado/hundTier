@@ -20,17 +20,27 @@
             MessageBox.Show("Olvidó ingresar email y/o password", "Validación de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             ' El usuario puede loguearse con email o username
-            strSQL = "Select u.id_usuario,u.email AS 'email_usuario' , u.nombre AS 'nombre_usuario', username From Usuarios u Where (u.email = '" & txt_email.Text & "' OR u.username = '" & txt_email.Text & "') AND u.password = '" & txt_password.Text & "'"
+            strSQL = "Select * From USUARIOS u Where  (u.email = '" & txt_email.Text & "' AND u.password = '" & txt_password.Text & "') OR (u.username = '" & txt_email.Text & "' AND u.password = '" & txt_password.Text & "')"
+            '"Select u.id_usuario,u.email AS 'email_usuario' , u.nombre AS 'nombre_usuario', username From Usuarios u Where (u.email = '" & txt_email.Text & "' OR u.username = '" & txt_email.Text & "') AND u.password = '" & txt_password.Text & "'"
+            '
             tabla = BDHelper.getDBHelper().ConsultaSQL(strSQL)
             If tabla.Rows.Count > 0 Then
                 'Si la tabla devuelve una fila con un usuario, creamos un objeto usuario de Visual
                 ' y le asignamos las variables nombre, username y email a las del usuario
                 'que devolvio la tabla desde la BD. 
                 usuario = New Usuario
-                usuario.setNombre(tabla.Rows(0).Item("nombre_usuario").ToString())
+                usuario.setNombre(tabla.Rows(0).Item("nombre").ToString())
+                usuario.setApellido(tabla.Rows(0).Item("apellido").ToString())
+                usuario.set_numTelefono(tabla.Rows(0).Item("num_telefono").ToString())
+                usuario.setEmail(tabla.Rows(0).Item("email").ToString())
+                usuario.setBarrio(tabla.Rows(0).Item("id_barrio").ToString())
+                usuario.setCalle(tabla.Rows(0).Item("calle").ToString())
+                usuario.setNumCalle(tabla.Rows(0).Item("numero").ToString())
+                usuario.setPiso(tabla.Rows(0).Item("piso").ToString())
+                usuario.setDepartamento(tabla.Rows(0).Item("departamento").ToString())
                 usuario.setUsername(tabla.Rows(0).Item("username").ToString())
-                usuario.setEmail(tabla.Rows(0).Item("email_usuario").ToString())
                 usuario.setId(tabla.Rows(0).Item("id_usuario").ToString())
+                usuario.setPassword(tabla.Rows(0).Item("password").ToString)
                 'Seteamos validado a true, entonces desde frm_main podremos saber si
                 'fue efectivo el login, para saber si actualizar el lbl de nombre de usuario
                 'o si se cancela el inicio de sesion para que la frm_main no se muestre

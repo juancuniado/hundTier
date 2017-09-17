@@ -36,7 +36,7 @@ Partial Class Frm_perfil_usuario
         Me.lbl_piso = New System.Windows.Forms.Label()
         Me.txt_piso = New System.Windows.Forms.TextBox()
         Me.lbl_numero = New System.Windows.Forms.Label()
-        Me.txt_numero = New System.Windows.Forms.TextBox()
+        Me.txt_numero_calle = New System.Windows.Forms.TextBox()
         Me.cmb_barrio = New System.Windows.Forms.ComboBox()
         Me.lbl_calle = New System.Windows.Forms.Label()
         Me.txt_calle = New System.Windows.Forms.TextBox()
@@ -131,7 +131,7 @@ Partial Class Frm_perfil_usuario
         Me.GroupBox2.Controls.Add(Me.lbl_piso)
         Me.GroupBox2.Controls.Add(Me.txt_piso)
         Me.GroupBox2.Controls.Add(Me.lbl_numero)
-        Me.GroupBox2.Controls.Add(Me.txt_numero)
+        Me.GroupBox2.Controls.Add(Me.txt_numero_calle)
         Me.GroupBox2.Controls.Add(Me.cmb_barrio)
         Me.GroupBox2.Controls.Add(Me.lbl_calle)
         Me.GroupBox2.Controls.Add(Me.txt_calle)
@@ -196,13 +196,13 @@ Partial Class Frm_perfil_usuario
         Me.lbl_numero.TabIndex = 8
         Me.lbl_numero.Text = "Numero:"
         '
-        'txt_numero
+        'txt_numero_calle
         '
-        Me.txt_numero.Location = New System.Drawing.Point(60, 95)
-        Me.txt_numero.Name = "txt_numero"
-        Me.txt_numero.ReadOnly = True
-        Me.txt_numero.Size = New System.Drawing.Size(193, 20)
-        Me.txt_numero.TabIndex = 7
+        Me.txt_numero_calle.Location = New System.Drawing.Point(60, 95)
+        Me.txt_numero_calle.Name = "txt_numero_calle"
+        Me.txt_numero_calle.ReadOnly = True
+        Me.txt_numero_calle.Size = New System.Drawing.Size(193, 20)
+        Me.txt_numero_calle.TabIndex = 7
         '
         'cmb_barrio
         '
@@ -380,7 +380,7 @@ Partial Class Frm_perfil_usuario
     Friend WithEvents lbl_piso As Label
     Friend WithEvents txt_piso As TextBox
     Friend WithEvents lbl_numero As Label
-    Friend WithEvents txt_numero As TextBox
+    Friend WithEvents txt_numero_calle As TextBox
     Friend WithEvents lbl_calle As Label
     Friend WithEvents txt_calle As TextBox
     Friend WithEvents lbl_barrio As Label
