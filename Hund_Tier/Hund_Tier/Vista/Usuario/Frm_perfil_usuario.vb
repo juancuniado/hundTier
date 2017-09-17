@@ -40,19 +40,24 @@
         strSql += " WHERE U.username = '" & user.getUsername & "'"
         Dim tabla = BDHelper.getDBHelper.ConsultaSQL(strSql)
         If tabla.Rows.Count > 0 Then
+            'guardamos las properties que si o si tienen valor 
             usuario.setNombre(tabla.Rows(0).Item("nombre").ToString())
+            usuario.setEmail(tabla.Rows(0).Item("email").ToString())
+            usuario.setUsername(tabla.Rows(0).Item("username").ToString())
+            usuario.setPassword(tabla.Rows(0).Item("password").ToString)
+            usuario.setBarrio(tabla.Rows(0).Item("nombre_barrio").ToString)
             usuario.setApellido(tabla.Rows(0).Item("apellido").ToString())
             usuario.set_numTelefono(tabla.Rows(0).Item("num_telefono").ToString())
-            usuario.setEmail(tabla.Rows(0).Item("email").ToString())
             usuario.setBarrio(tabla.Rows(0).Item("id_barrio").ToString())
             usuario.setCalle(tabla.Rows(0).Item("calle").ToString())
             usuario.setNumCalle(tabla.Rows(0).Item("numero").ToString())
-            usuario.setPiso(tabla.Rows(0).Item("piso").ToString())
             usuario.setDepartamento(tabla.Rows(0).Item("departamento").ToString())
-            usuario.setUsername(tabla.Rows(0).Item("username").ToString())
             usuario.setId(tabla.Rows(0).Item("id_usuario").ToString())
-            usuario.setBarrio(tabla.Rows(0).Item("nombre_barrio").ToString)
-            usuario.setPassword(tabla.Rows(0).Item("password").ToString)
+            'Las variables que pueden ser null las chequeamos
+            If Not DBNull.Value.Equals(tabla.Rows(0).Item("piso")) Then
+                usuario.setPiso(tabla.Rows(0).Item("piso"))
+            End If
+
         End If
     End Sub
 

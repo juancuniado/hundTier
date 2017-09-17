@@ -30,16 +30,9 @@
                 'que devolvio la tabla desde la BD. 
                 usuario = New Usuario
                 usuario.setNombre(tabla.Rows(0).Item("nombre").ToString())
-                usuario.setApellido(tabla.Rows(0).Item("apellido").ToString())
-                usuario.set_numTelefono(tabla.Rows(0).Item("num_telefono").ToString())
                 usuario.setEmail(tabla.Rows(0).Item("email").ToString())
                 usuario.setBarrio(tabla.Rows(0).Item("id_barrio").ToString())
-                usuario.setCalle(tabla.Rows(0).Item("calle").ToString())
-                usuario.setNumCalle(tabla.Rows(0).Item("numero").ToString())
-                usuario.setPiso(tabla.Rows(0).Item("piso").ToString())
-                usuario.setDepartamento(tabla.Rows(0).Item("departamento").ToString())
                 usuario.setUsername(tabla.Rows(0).Item("username").ToString())
-                usuario.setId(tabla.Rows(0).Item("id_usuario").ToString())
                 usuario.setPassword(tabla.Rows(0).Item("password").ToString)
                 'Seteamos validado a true, entonces desde frm_main podremos saber si
                 'fue efectivo el login, para saber si actualizar el lbl de nombre de usuario
