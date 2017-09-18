@@ -130,7 +130,6 @@ Partial Class frm_UsuarioABM
         '
         Me.txt_username.Location = New System.Drawing.Point(113, 97)
         Me.txt_username.Name = "txt_username"
-        Me.txt_username.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txt_username.Size = New System.Drawing.Size(118, 20)
         Me.txt_username.TabIndex = 13
         '

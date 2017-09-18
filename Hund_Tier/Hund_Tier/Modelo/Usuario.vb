@@ -11,6 +11,8 @@
     Private Property numero As String
     Private Property piso As Integer
     Private Property departamento As String
+    Private Property habilitado As Integer
+
 
 
 
@@ -56,6 +58,9 @@
     Public Function getDepartamento() As String
         Return departamento
     End Function
+    Public Function getHabilitado() As Integer
+        Return habilitado
+    End Function
 
     Public Sub setNombre(ByVal nombreUsuario As String)
         nombre = nombreUsuario
@@ -91,6 +96,9 @@
     End Sub
     Public Sub setPiso(ByVal piso_nuevo As Integer)
         piso = piso_nuevo
+    End Sub
+    Public Sub setHabilitado(ByVal valor As Integer)
+        habilitado = valor
     End Sub
 
     Public Sub setId(ByVal id_user As Integer)
