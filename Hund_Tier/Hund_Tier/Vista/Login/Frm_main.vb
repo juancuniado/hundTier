@@ -26,8 +26,18 @@
         Dim form_ajuste_perfil As New Frm_perfil_usuario
         form_ajuste_perfil.seleccionar_usuario(usuario)
         form_ajuste_perfil.ShowDialog()
-        If Frm_perfil_usuario.modifico_datos() Then
+        'Si el usuario modifico sus datos actualizamos el usuario de esta form con los datos del 
+        'usuario modificado
+        If form_ajuste_perfil.modifico_datos() Then
             usuario = Frm_perfil_usuario.getUsuario()
+            'Si el usuario en lugar de modificar sus datos elimino la cuenta, entonces le cerramos
+            'sesion y mostramos el login
+        ElseIf form_ajuste_perfil.elimino_cuenta() Then
+            usuario = Nothing
+            Me.Close()
+            'COMO VOLVER A INICIAR EL PROCESO UNA VEZ QUE EL USUARIO ELIMINO SU CUENTA
+            'PARA QUE DESDE MAIN ME LLEVE A LOGIN NUEVAMENTE
+            '????????????????????????????????????????????????????????????????
         End If
     End Sub
 End Class

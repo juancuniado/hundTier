@@ -53,6 +53,7 @@ Partial Class Frm_perfil_usuario
         Me.btn_salir = New System.Windows.Forms.Button()
         Me.btn_cancelar = New System.Windows.Forms.Button()
         Me.btn_guardar_cambios = New System.Windows.Forms.Button()
+        Me.lbl_eliminar_usuario = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -354,11 +355,21 @@ Partial Class Frm_perfil_usuario
         Me.btn_guardar_cambios.UseVisualStyleBackColor = True
         Me.btn_guardar_cambios.Visible = False
         '
+        'lbl_eliminar_usuario
+        '
+        Me.lbl_eliminar_usuario.AutoSize = True
+        Me.lbl_eliminar_usuario.Location = New System.Drawing.Point(13, 401)
+        Me.lbl_eliminar_usuario.Name = "lbl_eliminar_usuario"
+        Me.lbl_eliminar_usuario.Size = New System.Drawing.Size(71, 13)
+        Me.lbl_eliminar_usuario.TabIndex = 11
+        Me.lbl_eliminar_usuario.Text = "Borrar cuenta"
+        '
         'Frm_perfil_usuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(289, 418)
+        Me.Controls.Add(Me.lbl_eliminar_usuario)
         Me.Controls.Add(Me.btn_guardar_cambios)
         Me.Controls.Add(Me.btn_cancelar)
         Me.Controls.Add(Me.btn_modificar_info)
@@ -375,6 +386,7 @@ Partial Class Frm_perfil_usuario
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -409,4 +421,5 @@ Partial Class Frm_perfil_usuario
     Friend WithEvents btn_cancelar As Button
     Friend WithEvents btn_guardar_cambios As Button
     Friend WithEvents btn_modificar_pass As Button
+    Friend WithEvents lbl_eliminar_usuario As Label
 End Class

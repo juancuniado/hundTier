@@ -5,6 +5,8 @@
     'Atributo que nos permitira saber desde otra form si los datos fueron cambiados para actualizar
     'los datos que tiene el usuario guardado en la otra form
     Private Property bandera_datos_modificados = False
+    'Bandera que nos permitira saber desde otra form si el usuario elimino su cuenta
+    Private Property bandera_eliminado = False
 
     'La clasica strSql que contendra la string que se ejecutara en la BD
     Dim strSql As String = ""
@@ -207,6 +209,10 @@
         Return bandera_datos_modificados
     End Function
 
+    Public Function elimino_cuenta() As Boolean
+        Return bandera_datos_modificados
+    End Function
+
     Public Function getUsuario() As Usuario
         Return usuario
     End Function
@@ -225,6 +231,28 @@
             'llenamos los campos nuevamente, porque si se quiere volver a modificar la contra
             'tengo que tener en el campo contraseña el valor actualizado
             llenar_campos()
+        End If
+    End Sub
+
+    Private Sub lbl_eliminar_usuario_Click(sender As Object, e As EventArgs) Handles lbl_eliminar_usuario.Click
+        'Si hacen click en este label, se hara un borrado lógico del usuario para que ya no "exista"
+        'Primero le mostramos una ventana preguntando si realmente quiere eliminar la cuenta
+        Dim d As DialogResult
+        d = MessageBox.Show("¿Desea eliminar su cuenta?", "Aviso", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+        'Si responde que si, lo borramos
+        If (d = DialogResult.OK) Then
+            Dim str_sql_borrado = ""
+            ' el borrado es solo borrado logico, se cambia el valor del campo habilitado en la BD
+            'se actualiza a 0. Lo que indica que no esta habilitado
+            str_sql_borrado += "Update Usuarios "
+            str_sql_borrado += "SET habilitado= 0"
+            str_sql_borrado += " WHERE id_usuario=" & usuario.getIdUsuario
+            If BDHelper.getDBHelper.EjecutarSQL(str_sql_borrado) > 0 Then
+                MessageBox.Show("Lamentamos verte ir, ¡buen viaje!", "Cuenta eliminada", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                bandera_eliminado = True
+                Me.Close()
+            End If
+
         End If
     End Sub
 End Class
