@@ -20,7 +20,7 @@
             MessageBox.Show("Olvidó ingresar email y/o password", "Validación de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             ' El usuario puede loguearse con email o username
-            strSQL = "Select * From USUARIOS u Where  (u.email = '" & txt_email.Text & "' AND u.password = '" & txt_password.Text & "') OR (u.username = '" & txt_email.Text & "' AND u.password = '" & txt_password.Text & "')"
+            strSQL = "Select * From USUARIOS u Where  ((u.email = '" & txt_email.Text & "' AND u.password = '" & txt_password.Text & "') AND u.habilitado=1) OR ((u.username = '" & txt_email.Text & "' AND u.password = '" & txt_password.Text & "') AND u.habilitado=1)"
             '"Select u.id_usuario,u.email AS 'email_usuario' , u.nombre AS 'nombre_usuario', username From Usuarios u Where (u.email = '" & txt_email.Text & "' OR u.username = '" & txt_email.Text & "') AND u.password = '" & txt_password.Text & "'"
             '
             tabla = BDHelper.getDBHelper().ConsultaSQL(strSQL)

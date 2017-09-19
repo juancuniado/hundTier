@@ -101,6 +101,12 @@
     <Compile Include="Vista\Login\Frm_main.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vista\Usuario\frm_modificar_contrasena.Designer.vb">
+      <DependentUpon>frm_modificar_contrasena.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Usuario\frm_modificar_contrasena.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vista\Usuario\Frm_perfil_usuario.Designer.vb">
       <DependentUpon>Frm_perfil_usuario.vb</DependentUpon>
     </Compile>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Login\Frm_main.resx">
       <DependentUpon>Frm_main.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Usuario\frm_modificar_contrasena.resx">
+      <DependentUpon>frm_modificar_contrasena.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Usuario\Frm_perfil_usuario.resx">
       <DependentUpon>Frm_perfil_usuario.vb</DependentUpon>

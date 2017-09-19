@@ -45,10 +45,9 @@
             usuario.setEmail(tabla.Rows(0).Item("email").ToString())
             usuario.setUsername(tabla.Rows(0).Item("username").ToString())
             usuario.setPassword(tabla.Rows(0).Item("password").ToString)
-            usuario.setBarrio(tabla.Rows(0).Item("nombre_barrio").ToString)
             usuario.setApellido(tabla.Rows(0).Item("apellido").ToString())
             usuario.set_numTelefono(tabla.Rows(0).Item("num_telefono").ToString())
-            usuario.setBarrio(tabla.Rows(0).Item("id_barrio").ToString())
+            usuario.setBarrio(tabla.Rows(0).Item("id_barrio"))
             usuario.setCalle(tabla.Rows(0).Item("calle").ToString())
             usuario.setNumCalle(tabla.Rows(0).Item("numero").ToString())
             usuario.setDepartamento(tabla.Rows(0).Item("departamento").ToString())
@@ -62,11 +61,14 @@
     End Sub
 
     Private Sub llenar_campos()
+        Dim nombre_barrio = BDHelper.getDBHelper.ConsultaSQL("SELECT  b.nombre AS 'nombre_barrio' From Barrios b Where b.id_barrio =" & usuario.getBarrio.ToString).Rows(0).Item("nombre_barrio").ToString
         txt_nombre.Text = usuario.getNombre
         txt_apellido.Text = usuario.getApellido
         txt_email.Text = usuario.getEmail
         txt_username.Text = usuario.getUsername
-        txt_barrio.Text = usuario.getBarrio
+        'Para completar el campo del barrio del usuario hay que obtener el nombre del barrio
+        'de la tabla barrios de la BD haciendo un join 
+        txt_barrio.Text = nombre_barrio
         txt_password.Text = usuario.getPassword
         txt_calle.Text = usuario.getCalle
         txt_numero_calle.Text = usuario.getNumeroCalle
@@ -74,7 +76,7 @@
         txt_piso.Text = usuario.getPiso
         txt_telefono.Text = usuario.getNumTelefono
         frm_UsuarioABM.llenarCombo(cmb_barrio, BDHelper.getDBHelper.ConsultaSQL("SELECT * From Barrios WHERE 1 = 1"), "nombre", "id_barrio")
-
+        cmb_barrio.Text = nombre_barrio
 
     End Sub
 
@@ -84,8 +86,7 @@
     End Sub
 
     Private Sub permitir_edicion(ByVal valor As Boolean)
-        'TODO permitir el inicio de sesion con username ademas del correo porque el correo electronico deberia
-        'poder variar, pero el username no. 
+
         'TODO poner visibilidad del campo correo electronico en visible en modo edicion y lo contrario
         'en modo visualizacion
         If valor Then
@@ -209,4 +210,21 @@
     Public Function getUsuario() As Usuario
         Return usuario
     End Function
+
+    Private Sub btn_modificar_pass_Click(sender As Object, e As EventArgs) Handles btn_modificar_pass.Click
+        'Al presionar el boton creamos una nueva form para modificar la contraseña
+        ' y le pasamos el usuario como parametro, asi esta definido el creador de ese form
+        Dim form_cambio_password As New frm_modificar_contrasena(usuario)
+        'mostramos el form
+        form_cambio_password.ShowDialog()
+        'Si el usuario fue actualizado, esto se chequea con form_cambio_password.getModificado
+        'le asignamos al atributo usuario de esta form el valor del usuario actualizado que es el
+        'que esta en form_cambio_password
+        If form_cambio_password.getModificado() Then
+            usuario = form_cambio_password.getUsuario
+            'llenamos los campos nuevamente, porque si se quiere volver a modificar la contra
+            'tengo que tener en el campo contraseña el valor actualizado
+            llenar_campos()
+        End If
+    End Sub
 End Class

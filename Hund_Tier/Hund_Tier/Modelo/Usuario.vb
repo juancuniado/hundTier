@@ -2,7 +2,7 @@
     Private Property idUsuario As Integer
     Private Property nombre As String
     Private Property apellido As String
-    Private Property barrio As String
+    Private Property barrio_id As Integer
     Private Property username As String
     Private Property email As String
     Private Property contrasena As String
@@ -21,8 +21,8 @@
         Return idUsuario
     End Function
 
-    Public Function getBarrio() As String
-        Return barrio
+    Public Function getBarrio() As Integer
+        Return barrio_id
     End Function
 
     Public Function getNombre() As String
@@ -76,8 +76,8 @@
     Public Sub setEmail(ByVal emailUsuario As String)
         email = emailUsuario
     End Sub
-    Public Sub setBarrio(ByVal nuevoBarrioId As String)
-        barrio = nuevoBarrioId
+    Public Sub setBarrio(ByVal nuevoBarrioId As Integer)
+        barrio_id = nuevoBarrioId
     End Sub
     Public Sub setPassword(ByVal contra As String)
         contrasena = contra
@@ -98,7 +98,11 @@
         piso = piso_nuevo
     End Sub
     Public Sub setHabilitado(ByVal valor As Integer)
-        habilitado = valor
+        If valor <> 1 Or valor <> 2 Then
+            MessageBox.Show("El valor de habilitado debe ser 1 o 2")
+        Else
+            habilitado = valor
+        End If
     End Sub
 
     Public Sub setId(ByVal id_user As Integer)

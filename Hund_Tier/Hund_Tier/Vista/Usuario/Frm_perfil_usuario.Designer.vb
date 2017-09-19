@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Frm_perfil_usuario
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Frm_perfil_usuario
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lbl_email = New System.Windows.Forms.Label()
@@ -44,6 +44,7 @@ Partial Class Frm_perfil_usuario
         Me.txt_telefono = New System.Windows.Forms.TextBox()
         Me.lbl_num_telefono = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.btn_modificar_pass = New System.Windows.Forms.Button()
         Me.lbl_username = New System.Windows.Forms.Label()
         Me.txt_username = New System.Windows.Forms.TextBox()
         Me.txt_password = New System.Windows.Forms.TextBox()
@@ -259,6 +260,7 @@ Partial Class Frm_perfil_usuario
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.btn_modificar_pass)
         Me.GroupBox3.Controls.Add(Me.lbl_username)
         Me.GroupBox3.Controls.Add(Me.txt_username)
         Me.GroupBox3.Controls.Add(Me.txt_password)
@@ -269,6 +271,15 @@ Partial Class Frm_perfil_usuario
         Me.GroupBox3.TabIndex = 7
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de usuario"
+        '
+        'btn_modificar_pass
+        '
+        Me.btn_modificar_pass.Location = New System.Drawing.Point(173, 49)
+        Me.btn_modificar_pass.Name = "btn_modificar_pass"
+        Me.btn_modificar_pass.Size = New System.Drawing.Size(75, 23)
+        Me.btn_modificar_pass.TabIndex = 11
+        Me.btn_modificar_pass.Text = "Modificar"
+        Me.btn_modificar_pass.UseVisualStyleBackColor = True
         '
         'lbl_username
         '
@@ -293,7 +304,7 @@ Partial Class Frm_perfil_usuario
         Me.txt_password.Name = "txt_password"
         Me.txt_password.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txt_password.ReadOnly = True
-        Me.txt_password.Size = New System.Drawing.Size(171, 20)
+        Me.txt_password.Size = New System.Drawing.Size(85, 20)
         Me.txt_password.TabIndex = 1
         '
         'lbl_password
@@ -397,4 +408,5 @@ Partial Class Frm_perfil_usuario
     Friend WithEvents cmb_barrio As ComboBox
     Friend WithEvents btn_cancelar As Button
     Friend WithEvents btn_guardar_cambios As Button
+    Friend WithEvents btn_modificar_pass As Button
 End Class

@@ -35,19 +35,21 @@
                 id_usuario = BDHelper.getDBHelper.generarId("Usuarios")
 
                 'Agregamos los valores a la string que ira a la BD como comando
-                str_sql = "INSERT INTO Usuarios (id_usuario, nombre, apellido, email, id_barrio, username, password) VALUES("
+                str_sql = "INSERT INTO Usuarios (id_usuario, nombre, apellido, email, id_barrio, username, password, habilitado) VALUES("
                 str_sql += id_usuario.ToString() + ",'"
                 str_sql += txt_nombre.Text + "','"
                 str_sql += txt_apellido.Text + "','"
                 str_sql += txt_email.Text + "',"
                 str_sql += cmb_barrio.SelectedValue.ToString + ", '"
                 str_sql += txt_username.Text + "','"
-                str_sql += txt_password.Text + "')"
+                str_sql += txt_password.Text + "',"
+                'El 1 es el valor de la columna habilitado, que habilita al usuario.
+                str_sql += "1)"
 
                 'Si se ejecuto bien la insercion a la BD, devolvera un int distinto de 0 y se muestra un
                 'mensaje que lo informa
                 If BDHelper.getDBHelper.EjecutarSQL(str_sql) > 0 Then
-                    MessageBox.Show("Usuario insertado!", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show("Se registro el usuario!", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Me.Close()
                     frm_login.solicitar_iniciar_sesion()
                 End If
