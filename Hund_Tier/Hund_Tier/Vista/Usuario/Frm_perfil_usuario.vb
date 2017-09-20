@@ -159,6 +159,7 @@
                     bandera_edicion = False
                     permitir_edicion(bandera_edicion)
                     bandera_datos_modificados = True
+                    Frm_main.setUsuario(usuario)
                     Me.Close()
                 End If
 
@@ -250,6 +251,7 @@
             If BDHelper.getDBHelper.EjecutarSQL(str_sql_borrado) > 0 Then
                 MessageBox.Show("Lamentamos verte ir, ¡buen viaje!", "Cuenta eliminada", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 bandera_eliminado = True
+                Frm_main.setUsuario(usuario)
                 Me.Close()
             End If
 
